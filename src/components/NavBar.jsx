@@ -1,0 +1,49 @@
+import Image from 'next/image';
+import Link from 'next/link';
+import React from 'react';
+
+const NavBar = () => {
+    return (
+      <nav className="flex justify-between p-4  ">
+        <div>
+          <ul className="flex gap-3">
+            <li>
+              <Link href={"/"}>Home</Link>
+            </li>
+            <li>
+              <Link href={"/destinations"}>Destinations</Link>
+            </li>
+            <li>
+              <Link href={"/my-bookings"}>My Bookings</Link>
+            </li>
+            <li>
+              <Link href={"/admin"}>Admin</Link>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <Image
+            src={"/assets/Wanderlast.png"}
+            height={150}
+            width={150}
+            alt="logo"
+          />
+        </div>
+        <div>
+          <ul className="flex gap-3">
+            <li>
+              <Link href={"/profile"}>Profile</Link>
+            </li>
+            <li>
+              <Link href={"/login"}>Login</Link>
+            </li>
+            <li>
+              <Link href={"/sing-up"}>Sign Up</Link>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    );
+};
+
+export default NavBar;
