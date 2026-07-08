@@ -53,6 +53,7 @@ const NavBar = () => {
           width={150}
           height={150}
           alt="logo"
+          className="w-auto"
         />
       </Link>
 

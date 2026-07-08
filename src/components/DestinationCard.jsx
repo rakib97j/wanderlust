@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 import { BsArrowUpRight } from "react-icons/bs";
 import { FaLocationDot } from "react-icons/fa6";
@@ -6,7 +7,7 @@ import { HiCalendarDateRange } from "react-icons/hi2";
 
 
 const DestinationCard = ({ destination }) => {
-  const { destinationName, country, duration, price, imageUrl} = destination;
+  const {_id , destinationName, country, duration, price, imageUrl} = destination;
   return (
     <div className=" bg-white  rounded-xl">
       <div className="relative w-full h-56 overflow-hidden rounded-t-xl">
@@ -14,6 +15,7 @@ const DestinationCard = ({ destination }) => {
           src={imageUrl}
           alt={destinationName}
           fill
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           className="object-cover transition-transform duration-300 hover:scale-105"
         />
       </div>
@@ -31,9 +33,11 @@ const DestinationCard = ({ destination }) => {
           {duration}
         </h1>
 
-        <button className="flex  items-center gap-2 text-xl text-accent">
-          <span className="underline">Book Now</span> <BsArrowUpRight />{" "}
-        </button>
+        <Link href={`/destinations/${_id}`}>
+          <button className="flex  items-center gap-2 text-xl text-accent">
+            <span className="underline">Book Now</span> <BsArrowUpRight />{" "}
+          </button>
+        </Link>
       </div>
     </div>
   );};
