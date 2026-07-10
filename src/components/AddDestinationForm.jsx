@@ -12,8 +12,6 @@ const AddDestinationForm =  () => {
         const formData = new FormData(e.currentTarget)
         const destination = Object.fromEntries(formData.entries())
 
-
-
         console.log(destination);
 
        const res = await  fetch('http://localhost:5000/destination' , {
