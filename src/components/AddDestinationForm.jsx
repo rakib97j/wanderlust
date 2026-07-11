@@ -33,12 +33,6 @@ const AddDestinationForm =  () => {
     }
 
 
-
-
-
-
-
-
     return ( 
       <form  
       
