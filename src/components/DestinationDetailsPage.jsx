@@ -1,9 +1,10 @@
 import React from 'react';
 
 import Image from 'next/image';
-import { Button } from '@heroui/react';
+
 
 import { EditModal } from './EditModal';
+import { DeleteModal } from './DeletModal';
 
 const DestinationSingleDetailsPage = ({ destinationDetails }) => {
   const {
@@ -19,9 +20,9 @@ const DestinationSingleDetailsPage = ({ destinationDetails }) => {
   return (
     <div className="bg-[#8cceda60] p-2 rounded-lg ">
       <section className="max-w-7xl mx-auto px-4 py-7">
-        <div className='pb-1.5 flex justify-end gap-2'>
-          <EditModal destinationDetails={destinationDetails}/>
-          <Button variant='danger-soft'>  Delete</Button>
+        <div className="pb-1.5 flex justify-end gap-2">
+          <EditModal destinationDetails={destinationDetails} />
+          <DeleteModal destinationDetails={destinationDetails} />
         </div>
         <div className="bg-[#ffffffab] dark:bg-zinc-900 rounded-3xl shadow-xl overflow-hidden">
           {/* Hero Image */}

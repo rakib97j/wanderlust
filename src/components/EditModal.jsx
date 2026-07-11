@@ -82,7 +82,7 @@ export function EditModal({destinationDetails}) {
                     {/* Country */}
                     <TextField name="country" defaultValue={country} isRequired>
                       <Label>Country</Label>
-                      <Input placeholder="Indonesia" className="rounded-2xl" />
+                      <Input placeholder="Enter Country Name" className="rounded-2xl" />
                       <FieldError />
                     </TextField>
 
