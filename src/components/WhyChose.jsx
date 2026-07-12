@@ -8,7 +8,7 @@ const WhyChose = () => {
         <div className="py-28  max-w-7xl mx-auto">
           {/* header */}
           <div className="text-center ">
-            <h1 className="text-[#0C0B0B] text-5xl">Why Choose Wanderlust</h1>
+            <h1 className="text-[#0C0B0B] text-5xl ">Why Choose Wanderlust</h1>
             <p className="text-[#6C696D] text-lg mt-2">
               {" "}
               Your trusted partner for exceptional travel experiences
