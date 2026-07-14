@@ -1,4 +1,4 @@
-"use client";
+"use client"
 
 import { authClient } from "@/lib/auth-client";
 import {
@@ -11,75 +11,42 @@ import {
   TextField,
 } from "@heroui/react";
 import Link from "next/link";
-
 import { redirect } from "next/navigation";
 
-const SingUpForm = () => {
-
-    const onSubmit = async (e) =>{
-        e.preventDefault();
-        const formData = new FormData(e.currentTarget)
-        const user =Object.fromEntries(formData.entries());
-
-
-        const {data , error} = await authClient.signUp.email({
-            name:user.name,
-            image: user.image,
-            email:user.email,
-            password:user.password,
-            
-        })
+const LogInForm = () => {
 
 
 
-        if(data){
-            redirect('/')
-        }
-        if(error){
-            alert('error')
-        }
-
-        
-
-
-
-
-
-
-
-    }
-
+     const onSubmit = async (e) =>{
+            e.preventDefault();
+            const formData = new FormData(e.currentTarget)
+            const user =Object.fromEntries(formData.entries());
     
+    
+            const {data , error} = await authClient.signIn.email({
+                email:user.email,
+                password:user.password,
+                
+            })
+    
+    
+    
+            if(data){
+                redirect('/')
+            }
+            if(error){
+                alert('error')
+            }
+    
+    
+        }
+    
+
+
+
   return (
     <div className="flex  justify-center  ">
-      <Form
-        onSubmit={onSubmit}
-        className="flex w-96 flex-col gap-4 p-5 rounded-lg bg-[#8cceda60] shadow "
-      >
-        {/* Name */}
-        <TextField
-          isRequired
-          name="name"
-          type="text"
-          validate={(value) => {
-            if (value.length < 3) {
-              return "Name must be at least 3 characters";
-            }
-            return null;
-          }}
-        >
-          <Label>Name</Label>
-          <Input placeholder="John Doe" variant="secondary" />
-          <FieldError />
-        </TextField>
-
-        {/* Img */}
-        <TextField isRequired name="image" type="url">
-          <Label>Image</Label>
-          <Input placeholder="Enter your image link" variant="secondary" />
-          <FieldError />
-        </TextField>
-
+      <Form  onSubmit={onSubmit}  className="flex w-96 flex-col gap-4 p-5 rounded-lg bg-[#8cceda60] shadow ">
         {/* Email */}
         <TextField
           isRequired
@@ -125,15 +92,15 @@ const SingUpForm = () => {
 
         <div className="">
           <Button type="submit" className="w-full rounded-lg">
-            Create Account
+            Log In
           </Button>
           <p className="text-center text-sm text-muted-foreground mt-4">
             Already have an account?{" "}
             <Link
-              href="/login"
+              href="/sign-up"
               className="text-primary font-bold hover:underline"
             >
-              Log In
+              Sign Up
             </Link>
           </p>
         </div>
@@ -142,4 +109,4 @@ const SingUpForm = () => {
   );
 };
 
-export default SingUpForm;
+export default LogInForm;
