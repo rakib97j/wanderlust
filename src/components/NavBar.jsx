@@ -1,10 +1,24 @@
 "use client";
 
+import { authClient } from "@/lib/auth-client";
+import { Avatar, Button } from "@heroui/react";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
 const NavBar = () => {
+
+
+
+  const {data: session } = authClient.useSession();
+
+  const user =session?.user;
+  
+
+  
+  
+
+
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -30,7 +44,7 @@ const NavBar = () => {
   }`}
     >
       {/* Left */}
-      <ul className="flex gap-6">
+      <ul className="flex items-center gap-6">
         <li>
           <Link href="/">Home</Link>
         </li>
@@ -43,7 +57,6 @@ const NavBar = () => {
         <li>
           <Link href="/add-destination">Add Destination</Link>
         </li>
-        
       </ul>
 
       {/* Logo */}
@@ -53,21 +66,48 @@ const NavBar = () => {
           width={150}
           height={150}
           alt="logo"
-          className="w-auto"
+          className="w-auto "
         />
       </Link>
 
       {/* Right */}
-      <ul className="flex gap-6">
-        <li>
-          <Link href="/profile">Profile</Link>
-        </li>
-        <li>
+      <ul className="flex items-center gap-6">
+        <li></li>
+        {/* <li>
           <Link href="/login">Login</Link>
         </li>
         <li>
           <Link href="/sign-up">Sign Up</Link>
-        </li>
+        </li> */}
+
+        {/* Nav Bar Optional Chine */}
+        {user ? (
+          <>
+            {" "}
+            <li>
+              {" "}
+              <Link href="/profile">
+                <Avatar>
+                  <Avatar.Image
+                    alt="John Doe"
+                    src={user?.image}
+                  />
+                  <Avatar.Fallback>{user?.name[0]}</Avatar.Fallback>
+                </Avatar>
+              </Link>
+            </li>{" "}
+            <li><Button variant="danger" >Log out</Button></li>
+          </>
+        ) : (
+          <>
+            <li>
+              <Link href="/login">Login</Link>
+            </li>
+            <li>
+              <Link href="/sign-up">Sign Up</Link>
+            </li>
+          </>
+        )}
       </ul>
     </nav>
   );

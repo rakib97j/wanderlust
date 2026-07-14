@@ -57,7 +57,7 @@ export default function TravelersSay() {
             >
               <div className="flex flex-col justify-between p-8">
                 <p className="text-xl leading-relaxed text-black">
-                  " {item.review} "
+                  {item.review} 
                 </p>
 
                 <div className="mt-10">
@@ -74,6 +74,7 @@ export default function TravelersSay() {
                 <Image
                   src={item.image}
                   alt={item.name}
+                  
                   fill
                   className="object-cover rounded-lg"
                 />
