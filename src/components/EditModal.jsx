@@ -1,6 +1,6 @@
 "use client";
 
-import { Envelope } from "@gravity-ui/icons";
+
 import { Button, FieldError, Input, Label, ListBox, Modal, Surface, TextArea, TextField ,Select} from "@heroui/react";
 import { BiEdit } from "react-icons/bi";
 
@@ -42,7 +42,7 @@ export function EditModal({destinationDetails}) {
 
   return (
     <Modal>
-      <Button variant="secondary">
+      <Button className={"text-cyan-500 rounded-sm"} variant="secondary">
         {" "}
         <BiEdit /> Edit
       </Button>
@@ -82,7 +82,10 @@ export function EditModal({destinationDetails}) {
                     {/* Country */}
                     <TextField name="country" defaultValue={country} isRequired>
                       <Label>Country</Label>
-                      <Input placeholder="Enter Country Name" className="rounded-2xl" />
+                      <Input
+                        placeholder="Enter Country Name"
+                        className="rounded-2xl"
+                      />
                       <FieldError />
                     </TextField>
 
@@ -215,7 +218,6 @@ export function EditModal({destinationDetails}) {
                     <Button
                       onKeyDown={(e) => {
                         if (e.key === "Enter") {
-                         
                           handleUpdate(); // তোমার function
                         }
                       }}

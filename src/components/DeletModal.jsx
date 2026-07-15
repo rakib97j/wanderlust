@@ -34,7 +34,7 @@ export function DeleteModal({ destinationDetails  }) {
     
   return (
     <AlertDialog>
-      <Button variant="danger-soft">
+      <Button className={"rounded-sm"} variant="danger-soft">
         {" "}
         <TrashBin /> Delete
       </Button>

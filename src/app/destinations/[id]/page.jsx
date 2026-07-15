@@ -12,7 +12,7 @@ const DestinationDetailsPage =async ({params}) => {
     return (
       <section className="py-28 bg-[#8cceda83]">
         <div className="container mx-auto">
-          Destination Details Page
+          <h1 className='text-4xl font-bold text-cyan-500'> Destination Details Page</h1>
           <div>
             <DestinationSingleDetailsPage
               destinationDetails={destinationDetails}

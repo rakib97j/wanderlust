@@ -5,6 +5,7 @@ import Image from 'next/image';
 
 import { EditModal } from './EditModal';
 import { DeleteModal } from './DeletModal';
+import { BookingCardModal } from './BookingCardModal';
 
 const DestinationSingleDetailsPage = ({ destinationDetails }) => {
   const {
@@ -36,7 +37,7 @@ const DestinationSingleDetailsPage = ({ destinationDetails }) => {
 
             <div className="absolute inset-0 bg-black/40 flex items-end">
               <div className="p-8 text-white">
-                <span className="bg-emerald-500 px-4 py-1 rounded-full text-sm">
+                <span className="bg-cyan-500 px-4 py-1 rounded-full text-sm">
                   {category}
                 </span>
 
@@ -52,7 +53,7 @@ const DestinationSingleDetailsPage = ({ destinationDetails }) => {
             <div className="grid md:grid-cols-3 gap-6">
               <div className="border rounded-2xl p-6 text-center">
                 <p className="text-gray-500">Price</p>
-                <h2 className="text-3xl font-bold text-emerald-600">
+                <h2 className="text-3xl font-bold text-cyan-500">
                   ${price}
                 </h2>
               </div>
@@ -76,9 +77,11 @@ const DestinationSingleDetailsPage = ({ destinationDetails }) => {
               </p>
             </div>
 
-            <button className="mt-10 w-full bg-emerald-600 hover:bg-emerald-700 text-white py-4 rounded-xl text-lg font-semibold transition">
+            <BookingCardModal destinationDetails={destinationDetails} />
+
+            {/* <button className="mt-10 w-full bg-emerald-600 hover:bg-emerald-700 text-white py-4 rounded-xl text-lg font-semibold transition">
               Book Now
-            </button>
+            </button> */}
           </div>
         </div>
       </section>
