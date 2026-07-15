@@ -13,6 +13,12 @@ const NavBar = () => {
   const {data: session } = authClient.useSession();
 
   const user =session?.user;
+
+
+
+  const handelSingOut = async () => {
+    await authClient.signOut();
+  }
   
 
   
@@ -88,15 +94,16 @@ const NavBar = () => {
               {" "}
               <Link href="/profile">
                 <Avatar>
-                  <Avatar.Image
-                    alt="John Doe"
-                    src={user?.image}
-                  />
+                  <Avatar.Image referrerPolicy="no-referrer" alt="John Doe" src={user?.image} />
                   <Avatar.Fallback>{user?.name[0]}</Avatar.Fallback>
                 </Avatar>
               </Link>
             </li>{" "}
-            <li><Button variant="danger" >Log out</Button></li>
+            <li>
+              <Button onClick={handelSingOut} variant="danger">
+                Log out
+              </Button>
+            </li>
           </>
         ) : (
           <>
