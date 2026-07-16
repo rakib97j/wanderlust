@@ -1,5 +1,8 @@
+
 import { auth } from "@/lib/auth";
+import { Button } from "@heroui/react";
 import { headers } from "next/headers";
+import Image from "next/image";
 
 const myBookingPage = async () => {
   const session = await auth.api.getSession({
@@ -12,15 +15,59 @@ const myBookingPage = async () => {
     `http://localhost:5000/booking/${user?.id}`,
   );
 
-  const BookingData = await res.json()
-
-
-
-
+  const bookingData = await res.json()
+ 
 
     return (
       <div className="bg-[#8cceda60]">
-        <div className="py-28 max-w-7xl mx-auto ">This is my Booking Page</div>
+        <div className="py-28 max-w-7xl mx-auto ">
+          <div>
+            <h1 className="text-5xl font-medium">My Bookings</h1>
+            <p>Manage and view your upcoming travel plans</p>
+          </div>
+          <div className="grid gap-4">
+            {bookingData.map((booking) => (
+              <div
+                key={booking._id}
+                className=" gap-6 bg-[#8cceda] p-4  rounded-sm flex"
+              >
+                <div className="w-[200px] h-[150px] relative overflow-hidden rounded-lg">
+                  <Image
+                    src={booking.imageUrl}
+                    alt={booking.destinationName}
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+                <div>
+                  <h1>{booking.destinationName}</h1>
+                  <h1>
+                    Departure :{" "}
+                    {new Date(booking.departureDate).toLocaleDateString(
+                      "en-US",
+                      {
+                        year: "numeric",
+                        month: "long",
+                        day: "numeric",
+                      },
+                    )}
+                  </h1>
+                  <p>Booking ID: {booking._id}</p>
+                  <p>Price : $ {booking.price}</p>
+
+                  <div>
+                    <Button className="rounded-sm" variant="danger-soft">
+                      Cancel
+                    </Button>
+                    <Button className=" ml-2.5 rounded-sm" variant="primary">
+                      View
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     );
 };
