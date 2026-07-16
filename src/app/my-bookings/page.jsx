@@ -1,4 +1,5 @@
 
+import { BookingDelete } from "@/components/BookingDelete";
 import { auth } from "@/lib/auth";
 import { Button } from "@heroui/react";
 import { headers } from "next/headers";
@@ -22,14 +23,14 @@ const myBookingPage = async () => {
       <div className="bg-[#8cceda60]">
         <div className="py-28 max-w-7xl mx-auto ">
           <div>
-            <h1 className="text-5xl font-medium">My Bookings</h1>
+            <h1 className="text-5xl font-medium">My Bookings : {bookingData.length} </h1>
             <p>Manage and view your upcoming travel plans</p>
           </div>
-          <div className="grid gap-4">
+          <div className="grid gap-4 ">
             {bookingData.map((booking) => (
               <div
                 key={booking._id}
-                className=" gap-6 bg-[#8cceda] p-4  rounded-sm flex"
+                className=" gap-10 bg-[#8cceda] p-4  rounded-sm flex"
               >
                 <div className="w-[200px] h-[150px] relative overflow-hidden rounded-lg">
                   <Image
@@ -56,9 +57,7 @@ const myBookingPage = async () => {
                   <p>Price : $ {booking.price}</p>
 
                   <div>
-                    <Button className="rounded-sm" variant="danger-soft">
-                      Cancel
-                    </Button>
+                    <BookingDelete bookingId={booking._id} />
                     <Button className=" ml-2.5 rounded-sm" variant="primary">
                       View
                     </Button>
