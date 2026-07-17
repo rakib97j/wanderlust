@@ -19,5 +19,6 @@ export const config = {
     "/my-bookings",
     "/add-destination",
     "/destinations/:path",
+    "/profile",
   ],
 };
