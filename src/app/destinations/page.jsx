@@ -2,7 +2,9 @@ import DestinationCard from '@/components/DestinationCard';
 import React from 'react';
 
 const DestinationsPage = async () => {
-    const res = await fetch("http://localhost:5000/destination");
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_SERVER_URL}/destination`,
+    );
     const destinationsData = await res.json()
     return (
       <div className="py-28 bg-[#8cceda83] ">

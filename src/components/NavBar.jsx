@@ -92,14 +92,14 @@ const NavBar = () => {
             <li>
               {" "}
               <Link href="/profile">
-                <Avatar>
+                <Avatar size="sm">
                   <Avatar.Image referrerPolicy="no-referrer" alt="John Doe" src={user?.image} />
                   <Avatar.Fallback>{user?.name[0]}</Avatar.Fallback>
                 </Avatar>
               </Link>
             </li>{" "}
             <li>
-              <Button onClick={handelSingOut} variant="danger">
+              <Button size="sm" onClick={handelSingOut} variant="danger">
                 Log out
               </Button>
             </li>

@@ -17,13 +17,14 @@ export function DeleteModal({ destinationDetails  }) {
 
     const handelDelete = async () => {
         const res = await fetch(
-          `http://localhost:5000/destination/${_id}`,
+          `${process.env.NEXT_PUBLIC_SERVER_URL}/destination/${_id}`,
           {
-            method:"DELETE",
-            headers:{
-                "content-type" : "application/json",
+            method: "DELETE",
+            headers: {
+              "content-type": "application/json",
             },
-          });
+          },
+        );
 
           const data = await res.json()
          redirect('/destinations')
